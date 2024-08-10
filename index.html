@@ -182,7 +182,8 @@
                             <div class="col-md-8 ps-0 ">
                                 <p class="ps-3 textmuted fw-bold h6 mb-0">TOTAL RECEBIDO</p>
                                 <p class="h1 fw-bold d-flex">
-                                    <span class=" fas fa-dollar-sign textmuted pe-1 h6 align-text-top mt-1"></span>820
+                                    <span class=" fas fa-dollar-sign textmuted pe-1 h6 align-text-top mt-1"></span>
+                                    <span id="total-recebido">0</span>
                                     <span class="textmuted">,00</span>
                                 </p>
                                 <p class="ms-3 px-2 bg-green"></p>
@@ -224,14 +225,13 @@
                             </div>
                             <div class="row">
                                 <div class="col-12 mb-2">
-                                    <ul>
+                                    <ul id="contributions-list">
                                         <li>R$200</li>
                                         <li>R$100</li>
                                         <li>R$200</li>
-                                         <li>R$200</li>
+                                        <li>R$200</li>
                                         <li>R$100</li>
                                         <li>R$20</li>
-
                                     </ul>
                                 </div>
                             </div>
@@ -292,13 +292,22 @@
         </div>
     </div>
     <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
-    <script type='text/javascript' src='#'></script>
-    <script type='text/javascript' src='#'></script>
-    <script type='text/javascript' src='#'></script>
-    <script type='text/javascript'>#</script>
-    <script type='text/javascript'>var myLink = document.querySelector('a[href="#"]');
-    myLink.addEventListener('click', function(e) {
-      e.preventDefault();
-    });</script>
+    <script type='text/javascript'>
+        document.addEventListener('DOMContentLoaded', function () {
+            const contributions = document.querySelectorAll('#contributions-list li');
+            let totalRecebido = 0;
+
+            contributions.forEach(function (contribution) {
+                const value = parseFloat(contribution.getAttribute('data-value'));
+                totalRecebido += value;
+            });
+
+            const totalMeta = 1822; // Meta de exemplo, pode ser ajustada conforme necessário
+            const totalPendente = totalMeta - totalRecebido;
+
+            document.getElementById('total-recebido').textContent = totalRecebido.toFixed(2);
+            document.getElementById('total-pendente').textContent = totalPendente.toFixed(2);
+        });
+    </script>
 </body>
 </html>
