@@ -289,6 +289,41 @@
                 </div>
             </div>
         </div>
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="box-left">
+                    <p class="fw-bold h7">Aniversários</p>
+                    <ul id="birthdays-list">
+                        <li>07/02 - Ana Paula</li>
+                        <li>16/02 - Regina</li>
+                        <li>25/02 - David Batista</li>
+                        <li>08/03 - Mari</li>
+                        <li>31/03 - Cátia</li>
+                        <li>08/04 - Glauber</li>
+                        <li>13/04 - Shaya</li>
+                        <li>29/04 - Rejane</li>
+                        <li>05/05 - Odilio</li>
+                        <li>25/06 - Espedita</li>
+                        <li>06/07 - Cecília</li>
+                        <li>10/07 - Antonia</li>
+                        <li>11/07 - Vicente</li>
+                        <li>14/07 - Larisse</li>
+                        <li>27/07 - Neil</li>
+                        <li>08/08 - Dani</li>
+                        <li>12/08 - Davi</li>
+                        <li>23/08 - Luciana</li>
+                        <li>05/09 - Vaneide</li>
+                        <li>11/09 - Rhavi</li>
+                        <li>14/09 - Gislane</li>
+                        <li>23/09 - Raquel</li>
+                        <li>13/11 - Vilma</li>
+                        <li>20/11 - Sávio</li>
+                        <li>08/12 - Claudemir</li>
+                        <li>17/12 - Liviany</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
     <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
     <script type='text/javascript'>
@@ -307,10 +342,10 @@
             document.getElementById('total-recebido').textContent = totalRecebido.toFixed(2);
             document.getElementById('total-pendente').textContent = totalPendente.toFixed(2);
 
-            if (totalPendente >= 0) {
+            if (totalPendente === 0) {
                 const gifContainer = document.getElementById('gif-container');
                 const gifImage = document.createElement('img');
-                gifImage.src = 'https://i.gifer.com/origin/f2/f2ad485879fdc0e89157851ee1da8e20_w200.gif'; // Use the correct path to the uploaded GIF
+                gifImage.src = '/mnt/data/image.png'; // Use the correct path to the uploaded GIF
                 gifImage.alt = 'Celebration GIF';
                 gifContainer.appendChild(gifImage);
             }
