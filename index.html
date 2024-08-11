@@ -348,7 +348,7 @@
             document.getElementById('total-pendente').textContent = totalPendente.toFixed(2);
             document.getElementById('acima-meta').textContent = acimaMeta.toFixed(2);
 
-            if (totalPendente === 0) {
+            if (totalPendente >= 0) {
                 const gifContainer = document.getElementById('gif-container');
                 const gifImage = document.createElement('img');
                 gifImage.src = 'https://i.gifer.com/origin/f2/f2ad485879fdc0e89157851ee1da8e20_w200.gif'; // Use the correct path to the uploaded GIF
