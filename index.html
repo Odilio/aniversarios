@@ -233,8 +233,6 @@
                                         <li data-value="100">R$100</li>
                                         <li data-value="100">R$100</li>
                                         <li data-value="112">R$112</li>
-
-
                                     </ul>
                                 </div>
                             </div>
@@ -293,6 +291,7 @@
             </div>
         </div>
     </div>
+    <div id="gif-container" style="text-align: center; margin-top: 20px;"></div>
     <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
     <script type='text/javascript'>
         document.addEventListener('DOMContentLoaded', function () {
@@ -309,6 +308,14 @@
 
             document.getElementById('total-recebido').textContent = totalRecebido.toFixed(2);
             document.getElementById('total-pendente').textContent = totalPendente.toFixed(2);
+
+            if (totalPendente === 0) {
+                const gifContainer = document.getElementById('gif-container');
+                const gifImage = document.createElement('img');
+                gifImage.src = '/mnt/data/image.png'; // Use the correct path to the uploaded GIF
+                gifImage.alt = 'Celebration GIF';
+                gifContainer.appendChild(gifImage);
+            }
         });
     </script>
 </body>
