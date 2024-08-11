@@ -198,7 +198,7 @@
                                     <span class="fas fa-circle pe-2"></span>Dobramo a meta
                                 </p>
                                 <p class="fw-bold">
-                                    <span class="fas fa-dollar-sign pe-1"></span>00
+                                    <span class="fas fa-dollar-sign pe-1"></span><span id="acima-meta">0</span>
                                 </p>
                             </div>
                         </div>
@@ -339,9 +339,10 @@
 
             const totalMeta = 1932; 
             const totalPendente = totalMeta - totalRecebido;
-
+            const acimaMeta = -(totalMeta - totalRecebido);
             document.getElementById('total-recebido').textContent = totalRecebido.toFixed(2);
             document.getElementById('total-pendente').textContent = totalPendente.toFixed(2);
+            document.getElementById('acima-meta').textContent = acimaMeta.toFixed(2);
 
             if (totalPendente === 0) {
                 const gifContainer = document.getElementById('gif-container');
