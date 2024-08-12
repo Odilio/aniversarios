@@ -170,6 +170,11 @@
                 font-size: 10px
             }
         }
+
+        .highlight {
+            color: red;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body class='snippet-body'>
@@ -236,7 +241,6 @@
                                         <li data-value="112">R$112</li>
                                         <li data-value="50">R$50</li>
                                         <li data-value="150">R$150</li>
-
                                     </ul>
                                 </div>
                             </div>
@@ -354,6 +358,31 @@
                 gifImage.src = 'https://i.gifer.com/origin/f2/f2ad485879fdc0e89157851ee1da8e20_w200.gif'; // Use the correct path to the uploaded GIF
                 gifImage.alt = 'Celebration GIF';
                 gifContainer.appendChild(gifImage);
+            }
+
+            // Highlight the next birthday
+            const birthdaysList = document.querySelectorAll('#birthdays-list li');
+            const today = new Date();
+            let nextBirthdayElement = null;
+            let closestDays = Infinity;
+
+            birthdaysList.forEach(function (item) {
+                const [date, name] = item.textContent.split(' - ');
+                const [day, month] = date.split('/').map(Number);
+                const birthday = new Date(today.getFullYear(), month - 1, day);
+                if (birthday < today) {
+                    birthday.setFullYear(today.getFullYear() + 1);
+                }
+                const daysUntilBirthday = Math.ceil((birthday - today) / (1000 * 60 * 60 * 24));
+
+                if (daysUntilBirthday < closestDays) {
+                    closestDays = daysUntilBirthday;
+                    nextBirthdayElement = item;
+                }
+            });
+
+            if (nextBirthdayElement) {
+                nextBirthdayElement.classList.add('highlight');
             }
         });
     </script>
