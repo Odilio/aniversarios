@@ -342,20 +342,6 @@
     <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
     <script type='text/javascript'>
         document.addEventListener('DOMContentLoaded', function () {
-                        // Função para calcular o número de destino
-            function calculateLifePathNumber(date) {
-                const sumDigits = (num) => num.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
-
-                let [day, month, year] = date.split('/');
-                let totalSum = sumDigits(day) + sumDigits(month) + sumDigits(year);
-
-                while (totalSum > 9 && totalSum !== 11 && totalSum !== 22) {
-                    totalSum = sumDigits(totalSum);
-                }
-
-                return totalSum;
-            }
-            
             const contributions = document.querySelectorAll('#contributions-list li');
             let totalRecebido = 0;
 
@@ -381,19 +367,12 @@
 
             // Highlight the next birthday
             const birthdaysList = document.querySelectorAll('#birthdays-list li');
-
-            birthdaysList.forEach(function (item) {
-                const [date, name] = item.textContent.split(' - ');
-                const lifePathNumber = calculateLifePathNumber(date.trim());
-                item.innerHTML = `${date} - ${name} <span class="text-muted">(Número de Destino: ${lifePathNumber})</span>`;
-            });
-            
             const today = new Date();
             let nextBirthdayElement = null;
             let closestDays = Infinity;
 
             birthdaysList.forEach(function (item) {
-                const [date] = item.textContent.split(' - ');
+                const [date, name] = item.textContent.split(' - ');
                 const [day, month] = date.split('/').map(Number);
                 const birthday = new Date(today.getFullYear(), month - 1, day);
                 if (birthday < today) {
