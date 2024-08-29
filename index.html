@@ -381,16 +381,19 @@
 
             // Highlight the next birthday
             const birthdaysList = document.querySelectorAll('#birthdays-list li');
+
+            birthdaysList.forEach(function (item) {
+                const [date, name] = item.textContent.split(' - ');
+                const lifePathNumber = calculateLifePathNumber(date.trim());
+                item.textContent = `${date} - ${name} (Número de Destino: ${lifePathNumber})`;
+            });
             
             const today = new Date();
             let nextBirthdayElement = null;
             let closestDays = Infinity;
 
             birthdaysList.forEach(function (item) {
-                const [date, name] = item.textContent.split(' - ');
-                const lifePathNumber = calculateLifePathNumber(date.trim());
-                item.textContent = `${date} - ${name} (Número de Destino: ${lifePathNumber})`;
-           
+                const [date] = item.textContent.split(' - ');
                 const [day, month] = date.split('/').map(Number);
                 const birthday = new Date(today.getFullYear(), month - 1, day);
                 if (birthday < today) {
