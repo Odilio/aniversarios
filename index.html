@@ -385,7 +385,7 @@
             birthdaysList.forEach(function (item) {
                 const [date, name] = item.textContent.split(' - ');
                 const lifePathNumber = calculateLifePathNumber(date.trim());
-                item.textContent = `${date} - ${name} (Número de Destino: ${lifePathNumber})`;
+                item.innerHTML = `${date} - ${name} <span class="text-muted">(Número de Destino: ${lifePathNumber})</span>`;
             });
             
             const today = new Date();
