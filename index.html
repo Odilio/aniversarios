@@ -390,7 +390,7 @@
                 const [date, name] = item.textContent.split(' - ');
                 const lifePathNumber = calculateLifePathNumber(date.trim());
                 item.textContent = `${date} - ${name} (Número de Destino: ${lifePathNumber})`;
-            });
+           
                 const [day, month] = date.split('/').map(Number);
                 const birthday = new Date(today.getFullYear(), month - 1, day);
                 if (birthday < today) {
